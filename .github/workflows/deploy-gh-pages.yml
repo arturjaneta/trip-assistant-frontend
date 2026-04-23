@@ -26,11 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build -- --configuration production
+        run: npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/trip-assistant-frontend
+          path: ./dist/trip-assistant-frontend/browser
 
   deploy:
     needs: build
